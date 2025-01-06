@@ -1,0 +1,11 @@
+{
+  "name": "world-travel-backend",
+  "version": "1.0.0",
+  "description": "World Travel is a single page web application (SPA) that allows users to explore travel destinations, view their description and manage their information. Users can add new destinations, update their information, or delete existing destinations. Additionally, the app provides weather information for any city using the OpenWeather API. The application is designed to be an interactive platform that makes it easy to explore tourist destinations and check the weather in real time:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
