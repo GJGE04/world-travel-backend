@@ -2,6 +2,12 @@
 from db import connect_db
 from psycopg2 import sql
 
+import logging
+
+# Configuración básica del logger
+logging.basicConfig(level=logging.DEBUG, format="%(asctime)s - %(levelname)s - %(message)s")
+logger = logging.getLogger(__name__)
+
 # Crear un destino
 def create_travel_destination(name, country, description):
     try:
@@ -16,6 +22,7 @@ def create_travel_destination(name, country, description):
         return destination_id
         
     except Exception as e:
+        logger.error(f"Error creating destination: {e}")
         print(f"Error creating destination: {e}")
         return None
 
