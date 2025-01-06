@@ -1,4 +1,5 @@
 # app.py
+import os
 from flask import Flask, request, jsonify
 from crud import create_travel_destination, get_destinations, update_destination, delete_destination
 from weather import get_weather_data  # Para la integración con la API externa
@@ -58,35 +59,8 @@ def get_weather(city):
     return jsonify({'message': 'City not found'}), 404
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Usar el puerto proporcionado por Render, o 5000 como valor por defecto
+    port = int(os.environ.get("PORT", 5000))  
+    # Ejecutar la app en todas las interfaces de red (0.0.0.0) y en el puerto adecuado
+    app.run(host="0.0.0.0", port=port, debug=True)
     
-  
-
-@app.route('/weather/<string:city>', methods=['GET'])
-def get_weather2(city):
-    api_key = "your_openweather_api_key"
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
-
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-        weather = {
-            "city": city,
-            "temperature": data["main"]["temp"],
-            "description": data["weather"][0]["description"]
-        }
-        return jsonify(weather), 200
-    else:
-        return jsonify({"error": "Weather data not found"}), 404
-        
-        
-# Endpoint para obtener destinos de viaje (ejemplo)
-@app.route('/destinations', methods=['GET'])
-def get_destinations():
-    destinations = [
-        {'id': 1, 'name': 'Paris', 'country': 'France'},
-        {'id': 2, 'name': 'New York', 'country': 'USA'},
-        {'id': 3, 'name': 'Tokyo', 'country': 'Japan'}
-    ]
-    return jsonify(destinations)
-
