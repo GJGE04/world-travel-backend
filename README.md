@@ -12,6 +12,8 @@ El proyecto está organizado en dos carpetas fundamentales:
 - `\world-travel-backend`	: Contains the App in Python.
 - `\world-travel-frontend`	: Contains the App in React.js.
 
+https://github.com/GJGE04/world-travel-backend.git
+
 ## Technologies used
 
 - **Backend**:
